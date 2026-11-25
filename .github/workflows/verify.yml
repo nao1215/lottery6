@@ -1,0 +1,27 @@
+name: Verify
+
+# The checks every publish waits for, called by Check (pull requests and main), Pages (before
+# the site is uploaded) and Release (on the tag, before the zips are made): make verify writes
+# game/ from tools/build.py and tools/en.py, fails when that game/ differs from the commit and
+# runs gozen check. Each caller checks out its own commit, so the commit published is the one
+# checked.
+on:
+  workflow_call:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - uses: nao1215/setup-gozen@1c378fc446f62ecb29a7bcd40aea6dff8565d698 # v0.1.1
+
+      # tools/build.py needs only Python's standard library, which comes with the runner.
+      - name: make verify
+        run: make verify GOZEN=gozen

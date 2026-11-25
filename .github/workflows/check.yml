@@ -1,0 +1,22 @@
+name: Check
+
+# Pull requests and main run the checks of verify.yml. A pull request that changes tools/ must
+# commit the game/ that tools/build.py writes from it.
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+# A newer push to the same pull request cancels the older run; pushes to main
+# get a group of their own.
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.run_id }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+jobs:
+  verify:
+    uses: ./.github/workflows/verify.yml
