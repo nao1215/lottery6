@@ -43,10 +43,6 @@ Each ticket moves the clock on three minutes, and the window of Aoi's room turns
 | Pick a number, press a button | Tap it | ← → to the button, Enter |
 | Settings (volume, text speed) | — | O |
 
-## How it was made
-
-I generated the pictures with an SDXL model in my own pipeline, then cut them out and composed them with the Python scripts in `tools/`. The gyaru is the one from [Rabbit Run](https://github.com/nao1215/rabbitrun), and Aoi is the hero of another game of mine. The sound effects come from my RPG, where I synthesized them with numpy. `tools/build.py` writes `game/game.yaml` and `game/data/world.yaml`, and `tools/en.py` holds the English text.
-
 ## License
 
 [MIT License](./LICENSE), with the fonts and the gozen player under their own terms: see [NOTICE.md](./NOTICE.md).
