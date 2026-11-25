@@ -23,8 +23,8 @@ LETTERS = 'ABCDE'
 # tier: (name, prize)
 TIERS = {1: ('1等', 200000000), 2: ('2等', 10000000), 3: ('3等', 300000), 4: ('4等', 6800), 5: ('5等', 1000)}
 # The phone is held upright: sideways was harder to read (author 2026-11-25).
-# The public URL of the web build (ends with /); empty until it is decided.
-WEB_URL = ''
+# The public URL of the web build (ends with /).
+WEB_URL = 'https://nao1215.github.io/lottery6/'
 HOLD = 'portrait'
 # Seconds a result stays on auto before the next draw.
 AUTO_PACE = 0.25
@@ -461,7 +461,7 @@ def main():
         # newest save, or a new game. Settings stay on their key.
         'menus': 'none',
         # The page's share card and home-screen icon (author 2026-11-25: "ゲームのOGP画像は欲しい").
-        # og:image needs the page's public URL: set WEB_URL once it is decided.
+        # og:image needs the page's public URL (WEB_URL).
         'web': dict({'description': 'A number lottery: just pick 6 of 43. Out of money? Ask Aoi.',
                      'icon': 'web/icon.png'}, **({'url': WEB_URL, 'image': 'web/ogp.png'} if WEB_URL else {})),
         # Japanese unless the player's browser asks for English (as Succubus Live; author 2026-11-25),

@@ -1,12 +1,18 @@
+[![Check](https://github.com/nao1215/lottery6/actions/workflows/check.yml/badge.svg)](https://github.com/nao1215/lottery6/actions/workflows/check.yml)
 [![Pages](https://github.com/nao1215/lottery6/actions/workflows/pages.yml/badge.svg)](https://github.com/nao1215/lottery6/actions/workflows/pages.yml)
+[![Gitleaks](https://github.com/nao1215/lottery6/actions/workflows/gitleaks.yml/badge.svg)](https://github.com/nao1215/lottery6/actions/workflows/gitleaks.yml)
+[![Trivy](https://github.com/nao1215/lottery6/actions/workflows/trivy.yml/badge.svg)](https://github.com/nao1215/lottery6/actions/workflows/trivy.yml)
+[![OSV-Scanner](https://github.com/nao1215/lottery6/actions/workflows/osv-scan.yml/badge.svg)](https://github.com/nao1215/lottery6/actions/workflows/osv-scan.yml)
+[![GitHub Release](https://img.shields.io/github/v/release/nao1215/lottery6)](https://github.com/nao1215/lottery6/releases)
 [![License](https://img.shields.io/github/license/nao1215/lottery6)](./LICENSE)
+[![OpenSSF Scorecard](https://api.scorecard.dev/projects/github.com/nao1215/lottery6/badge)](https://scorecard.dev/viewer/?uri=github.com/nao1215/lottery6)
 [![made with gozen](https://img.shields.io/badge/made%20with-gozen-ff5c8a)](https://github.com/nao1215/gozen)
 
 ![the gyaru showing the game on her phone](./doc/img/ogp.png)
 
 lottery6 is a number lottery game for web browsers, on PC or your phone. You pick 6 of 43 numbers on a phone, buy a ticket for ¥200, and see the draw at once. A gyaru who all but lives in her friend Aoi's tower apartment plays it with his money. When she runs out, she sends him a selfie and asks for more. It is a project for learning how to make a game with AI, made with [gozen](https://github.com/nao1215/gozen). The game is in Japanese and English. It starts in your browser's language, and the button at the top right of the phone switches between them.
 
-<p align="center"><b>▶ <a href="https://nao1215.github.io/lottery6/">Play in your browser</a></b> — no download, on PC or your phone</p>
+<p align="center"><b>▶ <a href="https://nao1215.github.io/lottery6/">Play in your browser</a></b> — no download, on PC or your phone · or get a zip for your desktop from <a href="https://github.com/nao1215/lottery6/releases">the releases</a></p>
 
 <p align="center"><img src="./doc/img/demo.gif" width="720" alt="auto buy running: the draws come one after another on the phone"></p>
 
@@ -44,3 +50,18 @@ I generated the pictures with an SDXL model in my own pipeline, then cut them ou
 ## License
 
 [MIT License](./LICENSE), with the fonts and the gozen player under their own terms: see [NOTICE.md](./NOTICE.md).
+
+### Verifying release integrity
+
+Each release has `checksums.txt`, its keyless cosign signature, a GitHub build attestation of every zip and SLSA provenance (`multiple.intoto.jsonl`).
+
+```shell
+cosign verify-blob \
+  --bundle checksums.txt.sigstore.json \
+  --certificate-identity "https://github.com/nao1215/lottery6/.github/workflows/release.yml@refs/tags/vX.Y.Z" \
+  --certificate-oidc-issuer https://token.actions.githubusercontent.com \
+  checksums.txt
+sha256sum --ignore-missing -c checksums.txt
+gh attestation verify lottery6_linux-amd64.zip --repo nao1215/lottery6
+slsa-verifier verify-artifact --provenance-path multiple.intoto.jsonl --source-uri github.com/nao1215/lottery6 --source-tag vX.Y.Z lottery6_linux-amd64.zip
+```

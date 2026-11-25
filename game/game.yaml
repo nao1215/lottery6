@@ -6,7 +6,9 @@
  "menus": "none",
  "web": {
   "description": "A number lottery: just pick 6 of 43. Out of money? Ask Aoi.",
-  "icon": "web/icon.png"
+  "icon": "web/icon.png",
+  "url": "https://nao1215.github.io/lottery6/",
+  "image": "web/ogp.png"
  },
  "language": "ja",
  "written_in": "ja",
