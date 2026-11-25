@@ -4,6 +4,10 @@ All notable changes to this project are documented in this file. The format is b
 
 ## [Unreleased]
 
+### Fixed
+
+- The selfies in the chat are sharp: they were cut from 2K drawings and looked blurred; they are now enlarged first and are 1080x1440.
+
 ## [0.1.0] - 2026-11-26
 
 ### Added
