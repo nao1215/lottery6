@@ -1,0 +1,40 @@
+# The README pictures (doc/img): xvfb-run -a gozen capture game --config tools/readme_capture.yaml --out <dir> --raw, then pick/result/chat cropped to the phone (540..1380 x 0..1080) and scaled to 420x540.
+title: lottery6
+shots:
+  - id: demo
+    start: room
+    setup:
+      - language: en
+      - set: {var.cur: 1, var.auto: 1, var.clock_minutes: 1300, var.peak: 30000}
+      - call: random
+    gif:
+      fps: 12
+      duration: 6s
+      width: 720
+      script: |
+        wait 360
+  - id: pick
+    start: room
+    setup:
+      - language: en
+      - set: {var.cur: 1, var.draws: 1234, var.spent: 246800}
+      - call: random
+    script: |
+      wait 40
+  - id: result
+    start: room
+    setup:
+      - language: en
+      - set: {var.cur: 1, var.auto: 1}
+      - call: random
+    script: |
+      wait 190
+  - id: chat
+    start: room
+    setup:
+      - language: en
+      - gold: -29900
+      - set: {var.cur: 1, var.auto: 1}
+      - call: random
+    script: |
+      wait 150

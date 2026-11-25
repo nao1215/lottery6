@@ -1,0 +1,12 @@
+art/
+build/
+dist/
+.cache/
+__pycache__/
+*.log
+
+# Editors / OS
+.idea/
+.vscode/
+.DS_Store
+.claude/
