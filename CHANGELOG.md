@@ -4,6 +4,8 @@ All notable changes to this project are documented in this file. The format is b
 
 ## [Unreleased]
 
+## [0.1.1] - 2026-11-26
+
 ### Fixed
 
 - The selfies in the chat are sharp: they were cut from 2K drawings and looked blurred; they are now enlarged first and are 1080x1440.
@@ -18,5 +20,6 @@ All notable changes to this project are documented in this file. The format is b
 - Japanese and English, starting in the browser's language, switched with the button at the top right of the phone.
 - The browser version on GitHub Pages and desktop zips for Windows, macOS and Linux.
 
-[Unreleased]: https://github.com/nao1215/lottery6/compare/v0.1.0...HEAD
+[Unreleased]: https://github.com/nao1215/lottery6/compare/v0.1.1...HEAD
+[0.1.1]: https://github.com/nao1215/lottery6/compare/v0.1.0...v0.1.1
 [0.1.0]: https://github.com/nao1215/lottery6/releases/tag/v0.1.0
