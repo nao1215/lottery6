@@ -49,7 +49,7 @@ jobs:
             exit 1
           fi
 
-      - uses: nao1215/setup-gozen@1c378fc446f62ecb29a7bcd40aea6dff8565d698 # v0.1.1
+      - uses: nao1215/setup-gozen@04d0d6031ea0e813fa2d95cc198cefb83244aa21 # v0.1.2
         id: gozen
 
       - name: Export the desktop zips
